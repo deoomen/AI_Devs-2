@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+
+  app:
+    build: .
+    env_file:
+      - .env
+      - .env.local
+    volumes:
+      - ./app:/app
+    stdin_open: true
+    tty: true
