@@ -1,6 +1,6 @@
-class Lesson01:
+class Task01:
     """
-    Lesson 01 - helloapi
+    Task 01 - helloapi
     """
 
     AI_Devs = None
@@ -9,7 +9,7 @@ class Lesson01:
         self.AI_Devs = AI_Devs
 
     def run(self) -> None:
-        print('Lesson 01 - helloapi')
+        print('Task 01 - helloapi')
         self.AI_Devs.authorize('helloapi')
 
         task = self.AI_Devs.getTask()

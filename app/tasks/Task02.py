@@ -1,9 +1,9 @@
 import os
 from openai import OpenAI
 
-class Lesson02:
+class Task02:
     """
-    Lesson 02 - moderation
+    Task 02 - moderation
     """
 
     AI_Devs = None
@@ -12,7 +12,7 @@ class Lesson02:
         self.AI_Devs = AI_Devs
 
     def run(self) -> None:
-        print('Lesson 02 - moderation')
+        print('Task 02 - moderation')
         self.AI_Devs.authorize('moderation')
 
         task = self.AI_Devs.getTask()

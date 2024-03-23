@@ -2,8 +2,8 @@ import logging
 import os
 import sys
 import AI_Devs
-from lessons import Lesson01
-from lessons import Lesson02
+from tasks import Task01
+from tasks import Task02
 
 def initLoggers() -> None:
     level = logging.INFO
@@ -25,23 +25,23 @@ if __name__ == '__main__':
         ai = AI_Devs.AI_Devs(apiKey)
 
         if 1 == len(sys.argv):
-            lessonNumber = input("""
-Which lesson do you want to run?
+            taskNumber = input("""
+Which task do you want to run?
 1 - helloapi
 2 - moderation
 
 """)
         else:
-            lessonNumber = sys.argv[1]
+            taskNumber = sys.argv[1]
 
-        if '1' == lessonNumber:
-            lesson = Lesson01.Lesson01(ai)
-        elif '2' == lessonNumber:
-            lesson = Lesson02.Lesson02(ai)
+        if '1' == taskNumber:
+            task = Task01.Task01(ai)
+        elif '2' == taskNumber:
+            task = Task02.Task02(ai)
         else:
-            raise RuntimeError('Unknown lesson "{}"'.format(lessonNumber))
+            raise RuntimeError('Unknown task "{}"'.format(taskNumber))
 
-        lesson.run()
+        task.run()
 
     except Exception as exception:
         logging.error(exception, exc_info=True)
