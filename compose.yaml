@@ -6,7 +6,6 @@ services:
     build: .
     env_file:
       - .env
-      - .env.local
     volumes:
       - ./app:/app
     stdin_open: true

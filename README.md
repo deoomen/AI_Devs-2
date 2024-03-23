@@ -4,7 +4,7 @@ Hey! This is repository for my course of AI_Devs 2.
 
 ## How to run
 
-Create and fill `.env.local` file based on `.env`.
+Fill `.env` file.
 
 Install:
 
