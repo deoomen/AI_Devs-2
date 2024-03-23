@@ -47,6 +47,16 @@ class AI_Devs:
 
         return json
 
+    def postTask(self, payload: dict) -> dict:
+        response = requests.post(
+            self.apiUrl + 'task/' + self.token,
+            data = payload,
+        )
+        logging.info('Task posted')
+        json = self.parseResponse(response)
+
+        return json
+
     def answer(self, answer: str) -> None:
         response = requests.post(
             self.apiUrl + 'answer/' + self.token,
