@@ -1,6 +1,8 @@
 import logging
+import os
 import sys
 import AI_Devs
+from lessons import Lesson01
 
 def initLoggers() -> None:
     level = logging.DEBUG
@@ -14,24 +16,25 @@ def initLoggers() -> None:
 
     root.addHandler(stdoutHandler)
 
-def lesson1() -> None:
-    print('Lesson 01 - helloapi')
-
-    if len(sys.argv) == 1:
-        raise RuntimeError('Missing apiKey argument')
-
-    apiKey = sys.argv[1]
-    ai = AI_Devs.AI_Devs(apiKey)
-    ai.authorize('helloapi')
-    task = ai.getTask()
-    print('The task is: ', task['msg'])
-    ai.answer(task['cookie'])
-
 if __name__ == '__main__':
     initLoggers()
 
     try:
-        lesson1()
+        apiKey = os.getenv('API_KEY')
+        ai = AI_Devs.AI_Devs(apiKey)
+        lessonNumber = input("""
+Which lesson do you want to run?
+1 - helloapi
+
+""")
+
+        if '1' == lessonNumber:
+            lesson = Lesson01.Lesson01(ai)
+        else:
+            raise RuntimeError('Unknown lesson "{}"'.format(lessonNumber))
+
+        lesson.run()
+
     except Exception as exception:
         logging.error(exception, exc_info=True)
         exit(1)
