@@ -24,6 +24,7 @@ class AI_Devs:
         )
         json = self.parseResponse(response)
         self.token = json['token']
+        logging.info('Authorized')
 
     def parseResponse(self, response: requests.Response) -> dict:
         if response.status_code != 200:
@@ -41,6 +42,7 @@ class AI_Devs:
             self.apiUrl + 'task/' + self.token,
             headers = self.headers,
         )
+        logging.info('Task fetched')
         json = self.parseResponse(response)
 
         return json
@@ -53,6 +55,7 @@ class AI_Devs:
                 'answer': answer
             }
         )
+        logging.info('Answer sent')
         json = self.parseResponse(response)
 
         logging.info(json['msg'])
