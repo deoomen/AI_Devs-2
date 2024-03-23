@@ -4,6 +4,7 @@ import sys
 import AI_Devs
 from tasks import Task01
 from tasks import Task02
+from tasks import Task03
 
 def initLoggers() -> None:
     level = logging.INFO
@@ -29,6 +30,7 @@ if __name__ == '__main__':
 Which task do you want to run?
 1 - helloapi
 2 - moderation
+3 - blogger
 
 """)
         else:
@@ -38,6 +40,8 @@ Which task do you want to run?
             task = Task01.Task01(ai)
         elif '2' == taskNumber:
             task = Task02.Task02(ai)
+        elif '3' == taskNumber:
+            task = Task03.Task03(ai)
         else:
             raise RuntimeError('Unknown task "{}"'.format(taskNumber))
 
