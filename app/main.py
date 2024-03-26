@@ -6,6 +6,7 @@ from tasks import Task01
 from tasks import Task02
 from tasks import Task03
 from tasks import Task04
+from tasks import Task05
 
 def initLoggers() -> None:
     level = logging.INFO
@@ -32,6 +33,8 @@ Which task do you want to run?
 1 - helloapi
 2 - moderation
 3 - blogger
+4 - liar
+5 - inprompt
 
 """)
         else:
@@ -45,6 +48,8 @@ Which task do you want to run?
             task = Task03.Task03(ai)
         elif '4' == taskNumber:
             task = Task04.Task04(ai)
+        elif '5' == taskNumber:
+            task = Task05.Task05(ai)
         else:
             raise RuntimeError('Unknown task "{}"'.format(taskNumber))
 
