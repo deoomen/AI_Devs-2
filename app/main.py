@@ -9,6 +9,7 @@ from tasks import Task04
 from tasks import Task05
 from tasks import Task06
 from tasks import Task07
+from tasks import Task08
 
 def initLoggers() -> None:
     level = logging.INFO
@@ -39,6 +40,7 @@ Which task do you want to run?
 5 - inprompt
 6 - embedding
 7 - whisper
+8 - functions
 
 """)
         else:
@@ -58,6 +60,8 @@ Which task do you want to run?
             task = Task06.Task06(ai)
         elif '7' == taskNumber:
             task = Task07.Task07(ai)
+        elif '8' == taskNumber:
+            task = Task08.Task08(ai)
         else:
             raise RuntimeError('Unknown task "{}"'.format(taskNumber))
 
