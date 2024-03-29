@@ -1,8 +1,5 @@
 import os
-from langchain.chains import LLMChain
-from langchain_openai import ChatOpenAI
 from openai import OpenAI
-from langchain_core.prompts import ChatPromptTemplate
 
 class Task06:
     '''
