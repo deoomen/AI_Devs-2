@@ -1,6 +1,8 @@
 import logging
 import os
 import requests
+from tenacity import retry, stop_after_attempt, wait_exponential
+from tools.Errors import WrongAnswerError
 
 class AI_Devs:
 
@@ -27,7 +29,10 @@ class AI_Devs:
         logging.info('Authorized')
 
     def parseResponse(self, response: requests.Response) -> dict:
-        if response.status_code != 200:
+        if response.status_code == 406:
+            json = response.json()
+            raise WrongAnswerError(json['code'], json['msg'])
+        elif response.status_code != 200:
             raise RuntimeError('Unexpected HTTP status code: {}; Content: {}'.format(response.status_code, response.text))
 
         json = response.json()
@@ -37,6 +42,7 @@ class AI_Devs:
 
         return json
 
+    @retry(reraise=True, stop=stop_after_attempt(5), wait=wait_exponential(multiplier=2, min=2, max=10))
     def getTask(self) -> dict:
         response = requests.get(
             self.apiUrl + 'task/' + self.token,
@@ -57,7 +63,7 @@ class AI_Devs:
 
         return json
 
-    def answer(self, answer: str) -> None:
+    def answer(self, answer: str) -> str:
         response = requests.post(
             self.apiUrl + 'answer/' + self.token,
             headers = self.headers,
@@ -65,7 +71,9 @@ class AI_Devs:
                 'answer': answer
             }
         )
-        logging.info('Answer sent')
+        logging.info('Answer sent: {}'.format(answer))
         json = self.parseResponse(response)
 
         logging.info(json['msg'])
+
+        return json['msg']
