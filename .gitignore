@@ -2,3 +2,6 @@
 __pycache__
 .env
 *.mp3
+db/*
+!.gitkeep
+*.json

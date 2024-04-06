@@ -5,3 +5,6 @@ langchain_openai
 ua_parser
 bs4
 tenacity
+qdrant-client
+jq
+uuid
