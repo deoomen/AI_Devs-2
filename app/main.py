@@ -15,6 +15,7 @@ from tasks import Task10
 from tasks import Task11
 from tasks.Task12_search import Task12
 from tasks.Task13_people import Task13
+from tasks.Task14_knowledge import Task14
 
 def initLoggers() -> None:
     level = logging.INFO
@@ -51,6 +52,7 @@ Which task do you want to run?
 11 - whoami
 12 - search
 13 - people
+14 - knowledge
 
 """)
         else:
@@ -82,6 +84,8 @@ Which task do you want to run?
             task = Task12.Task12(ai)
         elif '13' == taskNumber:
             task = Task13.Task13(ai)
+        elif '14' == taskNumber:
+            task = Task14.Task14(ai)
         else:
             raise RuntimeError('Unknown task "{}"'.format(taskNumber))
 
