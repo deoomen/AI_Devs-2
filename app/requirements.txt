@@ -8,3 +8,4 @@ tenacity
 qdrant-client
 jq
 uuid
+flask
