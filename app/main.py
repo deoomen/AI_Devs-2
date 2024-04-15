@@ -20,6 +20,7 @@ from tasks.Task15_tools import Task15
 from tasks.Task16_gnome import Task16
 from tasks.Task17_ownapi import Task17
 from tasks.Task18_ownapipro import Task18
+from tasks.Task19_meme import Task19
 
 def initLoggers() -> None:
     level = logging.INFO
@@ -61,6 +62,7 @@ Which task do you want to run?
 16 - gnome
 17 - ownapi
 18 - ownapipro
+19 - meme
 
 """)
         else:
@@ -102,6 +104,8 @@ Which task do you want to run?
             task = Task17.Task17(ai)
         elif '18' == taskNumber:
             task = Task18.Task18(ai)
+        elif '19' == taskNumber:
+            task = Task19.Task19(ai)
         else:
             raise RuntimeError('Unknown task "{}"'.format(taskNumber))
 
