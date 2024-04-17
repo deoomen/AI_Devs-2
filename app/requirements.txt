@@ -9,3 +9,4 @@ qdrant-client
 jq
 uuid
 flask
+google-search-results

@@ -22,6 +22,7 @@ from tasks.Task17_ownapi import Task17
 from tasks.Task18_ownapipro import Task18
 from tasks.Task19_meme import Task19
 from tasks.Task20_optimaldb import Task20
+from tasks.Task21_google import Task21
 
 def initLoggers() -> None:
     level = logging.INFO
@@ -65,6 +66,7 @@ Which task do you want to run?
 18 - ownapipro
 19 - meme
 20 - optimaldb
+21 - google
 
 """)
         else:
@@ -110,6 +112,8 @@ Which task do you want to run?
             task = Task19.Task19(ai)
         elif '20' == taskNumber:
             task = Task20.Task20(ai)
+        elif '21' == taskNumber:
+            task = Task21.Task21(ai)
         else:
             raise RuntimeError('Unknown task "{}"'.format(taskNumber))
 
